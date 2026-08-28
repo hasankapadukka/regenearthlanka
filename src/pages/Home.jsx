@@ -5,6 +5,15 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import { useGSAP } from '@gsap/react'
 import { Canvas, useFrame } from '@react-three/fiber'
 import { Points, PointMaterial } from '@react-three/drei'
+import anushkaImage from '../assets/leadership/anushka.jpg'
+import lakshmiImage from '../assets/leadership/lakshmi.jpg'
+import hasankaImage from '../assets/leadership/hasanka.jpg'
+import dananjayaImage from '../assets/leadership/dananjaya.jpg'
+import chandrakanthiImage from '../assets/leadership/chandrakanthi.jpg'
+import bespiceLogo from '../assets/partner/bespice_logo.png'
+import livNatureLogo from '../assets/partner/livnature.png'
+import thurulkLogo from '../assets/partner/thurulk_logo.png'
+import ztLogo from '../assets/partner/zt_logo-1.webp'
 
 gsap.registerPlugin(ScrollTrigger)
 
@@ -28,6 +37,7 @@ const C = {
 }
 
 const IMG = {
+  logo:'../src/assets/regen_earth_lanka_foundation_logo.png',
   heroPerson: 'https://images.unsplash.com/photo-1680711155007-1bb8e70d4a9f?q=80&w=1065&auto=format&fit=crop',
   about:      'https://plus.unsplash.com/premium_photo-1769868306356-9b5fa1945450?q=80&w=986&auto=format&fit=crop',
   aboutWide:  'https://images.unsplash.com/photo-1581976684536-eb40b61ee175?q=80&w=2070&auto=format&fit=crop',
@@ -141,18 +151,19 @@ function LoadingScreen({ onComplete }) {
       display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', gap: 24,
     }}>
       <div ref={logoRef} style={{ opacity: 0 }}>
-        <svg width="72" height="72" viewBox="0 0 72 72">
+        {/* <svg width="72" height="72" viewBox="0 0 72 72">
           <circle cx="36" cy="36" r="35" fill="none" stroke={C.moss} strokeWidth="1.5" />
           <circle cx="36" cy="36" r="35" fill={C.moss} opacity="0.15" />
           <path d="M36 14C29 22 22 28 25 38C28 46 36 50 36 50C36 50 44 46 47 38C50 28 43 22 36 14Z" fill={C.leaf} />
           <line x1="36" y1="24" x2="36" y2="50" stroke={C.cream} strokeWidth="1.5" strokeLinecap="round" />
           <line x1="36" y1="35" x2="44" y2="30" stroke={C.cream} strokeWidth="1" strokeLinecap="round" opacity="0.6" />
           <line x1="36" y1="40" x2="28" y2="36" stroke={C.cream} strokeWidth="1" strokeLinecap="round" opacity="0.6" />
-        </svg>
+        </svg> */}
       </div>
       <div ref={textRef} style={{ opacity: 0, textAlign: 'center' }}>
-        <div style={{ fontFamily: "'Barlow Condensed', sans-serif", fontWeight: 700, fontSize: 22, color: C.cream, letterSpacing: '3px', textTransform: 'uppercase' }}>Regen Earth Lanka</div>
-        <div style={{ fontSize: 10, color: C.sand, letterSpacing: '4px', textTransform: 'uppercase', marginTop: 6, opacity: 0.7 }}>Foundation</div>
+        <img src={IMG.logo} alt="Regen Earth Lanka Foundation" style={{ width: 160, height: 'auto', display: 'block', margin: '0 auto' }} />
+        {/* <div style={{ fontFamily: "'Barlow Condensed', sans-serif", fontWeight: 700, fontSize: 22, color: C.cream, letterSpacing: '3px', textTransform: 'uppercase' }}>Regen Earth Lanka</div>
+        <div style={{ fontSize: 10, color: C.sand, letterSpacing: '4px', textTransform: 'uppercase', marginTop: 6, opacity: 0.7 }}>Foundation</div> */}
       </div>
       <div style={{ width: 160, height: 1, background: 'rgba(196,168,130,0.15)', marginTop: 8 }}>
         <div ref={barRef} style={{ height: '100%', background: C.sand, transformOrigin: 'left', transform: 'scaleX(0)' }} />
@@ -221,14 +232,17 @@ function Navbar() {
     setMenuOpen(false)
   }
 
+  const navColor = scrolled || menuOpen ? 'rgba(0,0,0,1)' : 'rgba(255,255,255,1)'
+
   return (
     <>
       <motion.nav
-        initial={{ y: -72 }} animate={{ y: 0 }}
+        initial={{ y: -110 }} animate={{ y: 0 }}
         transition={{ duration: 0.8, delay: 3.2, ease: [0.16, 1, 0.3, 1] }}
         style={{
-          position: 'fixed', top: 0, left: 0, right: 0, zIndex: 200, height: 64,
-          background: scrolled || menuOpen ? 'rgba(14,7,4,0.97)' : 'transparent',
+          position: 'fixed', top: 0, left: 0, right: 0, zIndex: 200, height: 110,
+          background: scrolled || menuOpen ? 'rgba(255,255,255,1)' : 'transparent',
+          color: navColor,
           backdropFilter: scrolled || menuOpen ? 'blur(20px)' : 'none',
           borderBottom: scrolled ? '1px solid rgba(196,168,130,0.08)' : 'none',
           transition: 'background 0.4s',
@@ -237,8 +251,9 @@ function Navbar() {
       >
         <Container style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
           {/* Logo */}
-          <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
-            <svg width="32" height="32" viewBox="0 0 32 32">
+          <div style={{ display: 'flex', alignItems: 'center', gap: 10, padding: 5 }}>
+            <img src={IMG.logo} alt="Regen Earth Lanka Foundation" style={{ width: 100, height: 100, display: 'block' }} />
+            {/* <svg width="32" height="32" viewBox="0 0 32 32">
               <circle cx="16" cy="16" r="16" fill={C.moss} />
               <path d="M16 7C13 11 10 14 12 19C14 23 16 25 16 25C16 25 18 23 20 19C22 14 19 11 16 7Z" fill={C.leaf} />
               <line x1="16" y1="12" x2="16" y2="25" stroke={C.cream} strokeWidth="1.2" strokeLinecap="round" />
@@ -246,7 +261,7 @@ function Navbar() {
             <div>
               <div style={{ fontFamily: "'Barlow Condensed', sans-serif", fontWeight: 700, fontSize: 14, color: C.cream, lineHeight: 1.1, letterSpacing: '1px' }}>Regen Earth Lanka</div>
               <div style={{ fontSize: 8, color: C.sand, letterSpacing: '2.5px', textTransform: 'uppercase' }}>Foundation</div>
-            </div>
+            </div> */}
           </div>
 
           {/* Desktop nav */}
@@ -255,15 +270,15 @@ function Navbar() {
               {navLinks.map(l => (
                 <a key={l.label} href={`#${l.href}`}
                   onClick={e => { e.preventDefault(); scrollTo(l.href) }}
-                  style={{ color: 'rgba(245,240,232,0.65)', fontSize: 13, textDecoration: 'none', transition: 'color 0.2s' }}
+                  style={{ color: navColor, fontSize: 13, textDecoration: 'none', transition: 'color 0.2s' }}
                   onMouseEnter={e => e.target.style.color = C.straw}
-                  onMouseLeave={e => e.target.style.color = 'rgba(245,240,232,0.65)'}
+                  onMouseLeave={e => e.target.style.color = navColor}
                 >{l.label}</a>
               ))}
               <motion.a href="#contact"
                 onClick={e => { e.preventDefault(); scrollTo('contact') }}
                 whileHover={{ background: C.sand, color: C.soil }}
-                style={{ border: '1.5px solid rgba(196,168,130,0.4)', color: C.straw, padding: '8px 22px', fontSize: 11, textDecoration: 'none', fontWeight: 600, letterSpacing: '1.5px', textTransform: 'uppercase', transition: 'background 0.2s, color 0.2s', display: 'block', borderRadius: 999 }}
+                style={{ border: '1.5px solid rgba(196,168,130,0.4)', color: navColor, padding: '8px 22px', fontSize: 11, textDecoration: 'none', fontWeight: 600, letterSpacing: '1.5px', textTransform: 'uppercase', transition: 'background 0.2s, color 0.2s', display: 'block', borderRadius: 999 }}
               >Partner</motion.a>
             </div>
           )}
@@ -274,9 +289,9 @@ function Navbar() {
               style={{ background: 'none', border: 'none', cursor: 'pointer', padding: 8, display: 'flex', flexDirection: 'column', gap: 5 }}
             >
               {/* 3 lines that animate to X */}
-              <motion.div animate={{ rotate: menuOpen ? 45 : 0, y: menuOpen ? 7 : 0 }} style={{ width: 24, height: 2, background: C.cream, borderRadius: 2, transition: 'background 0.2s' }} />
-              <motion.div animate={{ opacity: menuOpen ? 0 : 1 }} style={{ width: 24, height: 2, background: C.cream, borderRadius: 2 }} />
-              <motion.div animate={{ rotate: menuOpen ? -45 : 0, y: menuOpen ? -7 : 0 }} style={{ width: 24, height: 2, background: C.cream, borderRadius: 2 }} />
+              <motion.div animate={{ rotate: menuOpen ? 45 : 0, y: menuOpen ? 7 : 0 }} style={{ width: 24, height: 2, background: navColor, borderRadius: 2, transition: 'background 0.2s' }} />
+              <motion.div animate={{ opacity: menuOpen ? 0 : 1 }} style={{ width: 24, height: 2, background: navColor, borderRadius: 2 }} />
+              <motion.div animate={{ rotate: menuOpen ? -45 : 0, y: menuOpen ? -7 : 0 }} style={{ width: 24, height: 2, background: navColor, borderRadius: 2 }} />
             </button>
           )}
         </Container>
@@ -291,7 +306,7 @@ function Navbar() {
             exit={{ opacity: 0, y: -20 }}
             transition={{ duration: 0.3 }}
             style={{
-              position: 'fixed', top: 64, left: 0, right: 0, zIndex: 199,
+              position: 'fixed', top: 110, left: 0, right: 0, zIndex: 199,
               background: 'rgba(8,3,1,0.98)', backdropFilter: 'blur(24px)',
               borderBottom: '1px solid rgba(196,168,130,0.1)',
               padding: '32px 24px 40px', display: 'flex', flexDirection: 'column', gap: 4,
@@ -365,9 +380,9 @@ function Hero() {
       <div style={{ position: 'absolute', inset: 0, zIndex: 3, background: 'linear-gradient(to right, rgba(8,3,1,0.55) 0%, transparent 60%)' }} />
 
       {/* TEXT */}
-      <motion.div style={{ position: 'absolute', bottom: 0, left: 0, right: 0, zIndex: 4, y: textY }}>
+      <motion.div style={{ position: 'absolute', bottom: 70, left: 0, right: 0, zIndex: 4, y: textY }}>
         <Container style={{ paddingBottom: isMobile ? 40 : 64 }}>
-          <div style={{ maxWidth: 600 }}>
+          <div > {/* style={{ maxWidth: 600 }} */}
             <motion.div
               initial={{ opacity: 0, x: -20 }} animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.7, delay: 3.4 }}
@@ -1155,6 +1170,17 @@ function Partners() {
     { n:'03', title:'Research Institutions',desc:'Collaborate on innovation, climate research, and sustainable agriculture with our field teams.',   img: IMG.community, accent: C.sand   },
     { n:'04', title:'Donors & Agencies',    desc:'Support scalable regeneration and livelihood programs across rural communities island-wide.',      img: IMG.circular,  accent: C.straw  },
   ]
+  const partner_logos = [
+    { n:'01', name:'Bespice', href:bespiceLogo },
+    { n:'02', name:'Liv Nature', href:livNatureLogo },
+    { n:'03', name:'Thurulk', href:thurulkLogo },
+    { n:'04', name:'ZT', href:ztLogo },
+  ]
+  const logoSliderRef = useRef()
+
+  const scrollLogos = (direction) => {
+    logoSliderRef.current?.scrollBy({ left: direction * logoSliderRef.current.clientWidth, behavior: 'smooth' })
+  }
   return (
     <section id="partners" style={{ background: '#0e0906', padding: isMobile ? '64px 0' : '112px 0', overflow: 'hidden', position: 'relative' }}>
       {/* Giant watermark word */}
@@ -1223,6 +1249,33 @@ function Partners() {
             )
           })}
         </div>
+
+        {/* Partner logo slider */}
+        <div style={{ marginTop: isMobile ? 56 : 80 }}>
+          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'end', marginBottom: 20 }}>
+            <div>
+              <Label text="Our partners" light />
+              <h3 style={{ fontFamily: "'Barlow Condensed', sans-serif", fontSize: 'clamp(28px, 3vw, 42px)', fontWeight: 800, color: C.cream, lineHeight: 1, textTransform: 'uppercase', margin: 0 }}>
+                Growing together
+              </h3>
+            </div>
+            <div style={{ display: 'flex', gap: 8 }}>
+              <button type="button" onClick={() => scrollLogos(-1)} aria-label="Previous partner logos"
+                style={{ width: 40, height: 40, border: '1px solid rgba(245,240,232,0.2)', background: 'transparent', color: C.cream, cursor: 'pointer', fontSize: 18, lineHeight: 1 }}
+              >←</button>
+              <button type="button" onClick={() => scrollLogos(1)} aria-label="Next partner logos"
+                style={{ width: 40, height: 40, border: '1px solid rgba(245,240,232,0.2)', background: 'transparent', color: C.cream, cursor: 'pointer', fontSize: 18, lineHeight: 1 }}
+              >→</button>
+            </div>
+          </div>
+          <div ref={logoSliderRef} style={{ display: 'flex', gap: 12, overflowX: 'auto', scrollSnapType: 'x mandatory', scrollbarWidth: 'none', paddingBottom: 4 }}>
+            {partner_logos.map(logo => (
+              <div key={logo.n} style={{ flex: isMobile ? '0 0 calc((100% - 12px) / 2)' : '0 0 calc((100% - 36px) / 4)', minWidth: isMobile ? 150 : 0, height: isMobile ? 120 : 150, background: C.cream, display: 'flex', alignItems: 'center', justifyContent: 'center', scrollSnapAlign: 'start', padding: isMobile ? 18 : 24 }}>
+                <img src={logo.href} alt={`${logo.name} logo`} style={{ maxWidth: '100%', maxHeight: '100%', objectFit: 'contain', display: 'block' }} />
+              </div>
+            ))}
+          </div>
+        </div>
       </Container>
     </section>
   )
@@ -1238,11 +1291,11 @@ function Partners() {
 function Leadership() {
   const isMobile = useIsMobile()
   const team = [
-    { name:'Anushka Vidanapathirana', role:'President',                          initials:'AV', color: C.leaf   },
-    { name:'Lakshmi Jayasinghe',      role:'Secretary General / Exec. Director', initials:'LJ', color: C.sand   },
-    { name:'Hasanka Padukka',         role:'Vice President',                     initials:'HP', color: '#b8922a'},
-    { name:'Ravees Dananjaya',        role:'Treasurer',                          initials:'RD', color: C.straw  },
-    { name:'L.T Chandrakanthi',       role:'Assistant Secretary',                initials:'LC', color: C.sage   },
+    { name:'Anushka Vidanapathirana', role:'President',                          image: anushkaImage,       color: C.leaf   },
+    { name:'Lakshmi Jayasinghe',      role:'Secretary General / Exec. Director', image: lakshmiImage,       color: C.sand   },
+    { name:'Hasanka Padukka',         role:'Vice President',                     image: hasankaImage,       color: '#b8922a'},
+    { name:'Ravees Dananjaya',        role:'Treasurer',                          image: dananjayaImage,     color: C.straw  },
+    { name:'L.T Chandrakanthi',       role:'Assistant Secretary',                image: chandrakanthiImage, color: C.sage   },
   ]
   const values = ['Integrity','Transparency','Sustainability','Inclusion','Innovation','Community-First']
 
@@ -1283,21 +1336,21 @@ function Leadership() {
               {/* Glow blob behind avatar */}
               <div style={{ position: 'absolute', top: 20, left: '50%', transform: 'translateX(-50%)', width: 80, height: 80, borderRadius: '50%', background: m.color, opacity: 0.08, filter: 'blur(20px)', pointerEvents: 'none' }} />
 
-              {/* Avatar */}
+              {/* Portrait */}
               <motion.div
                 whileHover={{ scale: 1.12 }}
                 style={{
-                  width: 64, height: 64, borderRadius: '50%',
+                  width: '100%', height: 180, borderRadius: 2,
                   background: `linear-gradient(135deg, ${m.color}88, ${m.color}33)`,
                   border: `2px solid ${m.color}55`,
-                  display: 'flex', alignItems: 'center', justifyContent: 'center',
+                  display: 'block',
                   margin: '0 auto 18px',
-                  fontFamily: "'Barlow Condensed', sans-serif",
-                  fontSize: 20, fontWeight: 800, color: C.cream,
                   boxShadow: `0 0 24px ${m.color}33`,
-                  transition: 'transform 0.3s',
+                  transition: 'transform 0.3s', overflow: 'hidden',
                 }}
-              >{m.initials}</motion.div>
+              >
+                <img src={m.image} alt={`${m.name}, ${m.role}`} style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center top', display: 'block' }} />
+              </motion.div>
 
               <div style={{ fontFamily: "'Barlow Condensed', sans-serif", fontWeight: 700, color: C.cream, fontSize: 14, lineHeight: 1.3, marginBottom: 6 }}>{m.name}</div>
               <div style={{ color: m.color, fontSize: 11, letterSpacing: '1px', lineHeight: 1.4, textTransform: 'uppercase', fontWeight: 600 }}>{m.role}</div>
@@ -1337,7 +1390,7 @@ function GetInvolved() {
     { n:'01', title:'Volunteer',          desc:'Join our on-ground teams and contribute your skills to regeneration projects across Sri Lanka.', img: IMG.community, accent: C.leaf,    cta: 'Get Involved' },
     { n:'02', title:'Community Programs', desc:'Participate in local regenerative agriculture, soil health, and sustainable farming programs.',    img: IMG.farming,   accent: '#b8922a', cta: 'Learn More'   },
     { n:'03', title:'Youth Leadership',   desc:"Young change-makers shaping the future of Sri Lanka's environmental sustainability.",              img: IMG.forest,    accent: C.sand,    cta: 'Apply Now'    },
-    { n:'04', title:'Donate',             desc:'Support rural regeneration and help farming families build more resilient, sustainable futures.',   img: IMG.circular,  accent: C.straw,   cta: 'Donate Now'   },
+    { n:'04', title:'Donate',             desc:'Support rural regeneration and help farming families build more resilient, sustainable futures.',   img: IMG.circular,  accent: C.straw,   cta: 'Donate Now',  href: '#donate' },
   ]
 
   return (
@@ -1400,8 +1453,8 @@ function GetInvolved() {
               <p style={{ color: 'rgba(245,240,232,0.6)', fontSize: 13, lineHeight: 1.7, marginBottom: 20 }}>{c.desc}</p>
 
               {/* CTA — slides up and glows on hover */}
-              <motion.a href="#contact"
-                onClick={e => { e.preventDefault(); document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' }) }}
+              <motion.a href={c.href || '#contact'}
+                onClick={e => { e.preventDefault(); document.getElementById((c.href || '#contact').slice(1))?.scrollIntoView({ behavior: 'smooth' }) }}
                 animate={{ opacity: hovered === i ? 1 : 0.3, y: hovered === i ? 0 : 8 }}
                 transition={{ duration: 0.3 }}
                 style={{ display: 'inline-block', background: c.accent, color: C.soil, padding: '10px 24px', fontSize: 11, textDecoration: 'none', fontWeight: 700, letterSpacing: '1.5px', textTransform: 'uppercase', borderRadius: 999, width: 'fit-content' }}
@@ -1410,6 +1463,71 @@ function GetInvolved() {
           </motion.div>
         ))}
       </div>
+    </section>
+  )
+}
+
+/* ── DONATE ─────────────────────────────────────────────────
+   Bank transfer details with a quick copy action for the account number.
+──────────────────────────────────────────────────────────── */
+function Donate() {
+  const isMobile = useIsMobile()
+  const [copied, setCopied] = useState(false)
+  const accountNumber = '0140 14009787 120'
+
+  const copyAccountNumber = async () => {
+    try {
+      await navigator.clipboard.writeText(accountNumber)
+      setCopied(true)
+      window.setTimeout(() => setCopied(false), 1800)
+    } catch {
+      setCopied(false)
+    }
+  }
+
+  const details = [
+    { label: 'Account Name', value: 'Regen Earth Lanka Foundation' },
+    { label: 'Bank', value: 'Seylan Bank' },
+    { label: 'Branch', value: 'Dehiwala' },
+  ]
+
+  return (
+    <section id="donate" style={{ background: C.cream, padding: '96px 0', position: 'relative', overflow: 'hidden' }}>
+      <Container>
+        <div style={{ display: 'grid', gridTemplateColumns: isMobile ? '1fr' : '1fr 1fr', gap: isMobile ? 40 : 64, alignItems: 'center' }}>
+          <div>
+            <Label text="Make an impact" />
+            <h2 style={{ fontFamily: "'Barlow Condensed', sans-serif", fontSize: 'clamp(42px, 5vw, 76px)', fontWeight: 900, color: C.soil, lineHeight: 0.9, textTransform: 'uppercase', marginBottom: 24 }}>
+              Donate now.<br />
+              <span style={{ fontFamily: SCRIPT, color: C.leaf, textTransform: 'none', fontSize: '0.72em', fontWeight: 600 }}>Grow a future.</span>
+            </h2>
+            <p style={{ color: 'rgba(44,26,14,0.65)', fontSize: 15, lineHeight: 1.9, maxWidth: 460, margin: 0 }}>
+              Your contribution helps us restore ecosystems, strengthen rural livelihoods, and build a more resilient future for Sri Lanka.
+            </p>
+          </div>
+
+          <div style={{ background: C.soil, padding: '36px 32px', color: C.cream }}>
+            <div style={{ color: C.sand, fontSize: 10, letterSpacing: '2.5px', textTransform: 'uppercase', marginBottom: 24 }}>Bank transfer details</div>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: 16 }}>
+              {details.map(detail => (
+                <div key={detail.label} style={{ display: 'flex', justifyContent: 'space-between', gap: 20, borderBottom: '1px solid rgba(245,240,232,0.12)', paddingBottom: 14 }}>
+                  <span style={{ color: 'rgba(245,240,232,0.45)', fontSize: 11, textTransform: 'uppercase', letterSpacing: '1.2px' }}>{detail.label}</span>
+                  <strong style={{ color: C.cream, fontSize: 14, textAlign: 'right', fontWeight: 500 }}>{detail.value}</strong>
+                </div>
+              ))}
+              <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', gap: 20 }}>
+                <span style={{ color: 'rgba(245,240,232,0.45)', fontSize: 11, textTransform: 'uppercase', letterSpacing: '1.2px' }}>Account Number</span>
+                <button type="button" onClick={copyAccountNumber} aria-label="Copy account number"
+                  style={{ border: 'none', background: 'none', color: C.sand, cursor: 'pointer', fontSize: 15, fontWeight: 600, letterSpacing: '1px', padding: 0 }}
+                >{copied ? 'Copied' : accountNumber}</button>
+              </div>
+            </div>
+            <div style={{ marginTop: 28, color: 'rgba(245,240,232,0.4)', fontSize: 12, lineHeight: 1.7 }}>
+              Please include your name as the transfer reference and contact us if you need a donation acknowledgment.
+            </div>
+          </div>
+        </div>
+      </Container>
     </section>
   )
 }
@@ -1426,11 +1544,11 @@ function GetInvolved() {
 function Contact() {
   const isMobile = useIsMobile()
   const contacts = [
-    { label:'Address', value:'No. 112, Diyawanna Gardens, Battaramulla, Sri Lanka', href: null },
-    { label:'Web',     value:'www.regenearthlanka.org',           href: 'https://regenearthlanka.org' },
-    { label:'General', value:'info@regenearthlanka.org',          href: 'mailto:info@regenearthlanka.org' },
-    { label:'Office',  value:'president@regenearthlanka.org',     href: 'mailto:president@regenearthlanka.org' },
-    { label:'Connect', value:'connect@regenearthlanka.org',       href: 'mailto:connect@regenearthlanka.org' },
+    { label:'Contact', value:'071 921 2024', href:'tel:+94719212024' },
+    { label:'Email', value:'regenearthlankafoundation@gmail.com', href:'mailto:regenearthlankafoundation@gmail.com' },
+    { label:'BR Number', value:'GA 00363513', href:null },
+    { label:'Address', value:'No. 327/B/12, Idigahadeniya, Pannipitiya', href:null },
+    { label:'WhatsApp', value:'071 921 2024', href:'https://wa.me/94719212024' },
   ]
 
   return (
@@ -1447,19 +1565,26 @@ function Contact() {
             <motion.div initial={{ opacity: 0, x: -30 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ duration: 0.9 }}>
               <Label text="Get in Touch" light />
               <h2 style={{ fontFamily: "'Barlow Condensed', sans-serif", fontSize: 'clamp(36px, 4vw, 64px)', fontWeight: 900, color: C.cream, lineHeight: 0.95, textTransform: 'uppercase', letterSpacing: '-1.5px', marginBottom: 48 }}>
-                Let's Build<br />A{' '}
-                <span style={{ fontFamily: SCRIPT, color: C.leaf, textTransform: 'none', fontSize: '0.8em', fontWeight: 600, letterSpacing: 0 }}>Greener Future</span><br />
+                Let's Build A{' '}<br />
+                <span style={{ fontFamily: SCRIPT, color: C.leaf, textTransform: 'none', fontSize: '0.8em', fontWeight: 600, letterSpacing: 0 }}>Greener Future</span> 
                 Together.
+                {/* Script sign-off */}
+              <motion.div
+                initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }} transition={{ delay: 0.7 }}
+                style={{ marginTop: 40, fontFamily: SCRIPT, fontSize: 28, color: C.leaf, opacity: 0.6, transform: 'rotate(-2deg)', display: 'inline-block' }}
+              >for the earth.</motion.div>
               </h2>
+
+
 
               <div style={{ display: 'flex', flexDirection: 'column' }}>
                 {contacts.map((item, i) => (
                   <motion.div key={i}
                     initial={{ opacity: 0, x: -20 }} whileInView={{ opacity: 1, x: 0 }}
                     viewport={{ once: true }} transition={{ delay: 0.1 + i * 0.09 }}
-                    style={{ display: 'flex', gap: 20, padding: '16px 0', borderBottom: '1px solid rgba(245,240,232,0.05)' }}
+                    style={{ display: 'flex', gap: 60, padding: '16px 0', borderBottom: '1px solid rgba(245,240,232,0.05)' }}
                   >
-                    <div style={{ color: 'rgba(196,168,130,0.3)', fontSize: 9, fontWeight: 700, textTransform: 'uppercase', letterSpacing: '2px', width: 60, flexShrink: 0, paddingTop: 3 }}>{item.label}</div>
+                    <div style={{ color: 'rgba(196,168,130,0.3)', fontSize: 9, fontWeight: 700, textTransform: 'uppercase', letterSpacing: '2px', width: 75, flexShrink: 0, paddingTop: 3 }}>{item.label}</div>
                     {item.href ? (
                       <motion.a href={item.href}
                         whileHover={{ x: 6, color: C.sand }}
@@ -1472,11 +1597,7 @@ function Contact() {
                 ))}
               </div>
 
-              {/* Script sign-off */}
-              <motion.div
-                initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }} transition={{ delay: 0.7 }}
-                style={{ marginTop: 40, fontFamily: SCRIPT, fontSize: 28, color: C.leaf, opacity: 0.6, transform: 'rotate(-2deg)', display: 'inline-block' }}
-              >for the earth.</motion.div>
+              
             </motion.div>
 
             {/* RIGHT — Glass card */}
@@ -1504,9 +1625,8 @@ function Contact() {
               {/* Email links with hover slide */}
               <div style={{ display: 'flex', flexDirection: 'column', gap: 6, marginBottom: 28 }}>
                 {[
-                  { email:'info@regenearthlanka.org',    label:'General Enquiries' },
-                  { email:'connect@regenearthlanka.org', label:'Partnerships'      },
-                  { email:'sg@regenearthlanka.org',      label:'Executive Office'  },
+                  { email:'regenearthlankafoundation@gmail.com',    label:'General Enquiries' },
+                  { email:'info@regenearthlanka.org',    label:'General Enquiries' }
                 ].map((e, i) => (
                   <motion.a key={i} href={`mailto:${e.email}`}
                     whileHover={{ x: 6, background: 'rgba(106,158,74,0.1)', borderColor: `${C.leaf}44` }}
@@ -1527,7 +1647,7 @@ function Contact() {
                 ))}
               </div>
 
-              <motion.a href="mailto:info@regenearthlanka.org"
+              <motion.a href="mailto:regenearthlankafoundation@gmail.com"
                 whileHover={{ scale: 1.02, boxShadow: `0 12px 36px rgba(74,110,56,0.5)` }}
                 whileTap={{ scale: 0.97 }}
                 style={{ display: 'block', textAlign: 'center', background: `linear-gradient(135deg, ${C.sage}, ${C.moss})`, color: C.cream, padding: '16px', textDecoration: 'none', fontSize: 11, fontWeight: 700, letterSpacing: '2px', textTransform: 'uppercase', borderRadius: 999, transition: 'box-shadow 0.3s' }}
@@ -1583,6 +1703,7 @@ export default function Home() {
         <Partners />
         <Leadership />
         <GetInvolved />
+        <Donate />
         <Contact />
         <Footer />
       </div>
