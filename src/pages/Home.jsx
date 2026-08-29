@@ -5,6 +5,7 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import { useGSAP } from '@gsap/react'
 import { Canvas, useFrame } from '@react-three/fiber'
 import { Points, PointMaterial } from '@react-three/drei'
+import foundationLogo from '../assets/regen_earth_lanka_foundation_logo.png'
 import anushkaImage from '../assets/leadership/anushka.jpg'
 import lakshmiImage from '../assets/leadership/lakshmi.jpg'
 import hasankaImage from '../assets/leadership/hasanka.jpg'
@@ -37,7 +38,7 @@ const C = {
 }
 
 const IMG = {
-  logo:       'assets/regen_earth_lanka_foundation_logo.png',
+  logo:       foundationLogo,
   heroPerson: 'https://images.unsplash.com/photo-1680711155007-1bb8e70d4a9f?q=80&w=1065&auto=format&fit=crop',
   about:      'https://plus.unsplash.com/premium_photo-1769868306356-9b5fa1945450?q=80&w=986&auto=format&fit=crop',
   aboutWide:  'https://images.unsplash.com/photo-1581976684536-eb40b61ee175?q=80&w=2070&auto=format&fit=crop',
