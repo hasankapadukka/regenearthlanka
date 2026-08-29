@@ -221,10 +221,10 @@ function Navbar() {
   }, [])
 
   const navLinks = [
-    { label: 'Mission',  href: 'mission'  },
-    { label: 'Our Work', href: 'our-work' },
-    { label: 'Impact',   href: 'impact'   },
-    { label: 'Partners', href: 'partners' },
+    { label: 'About Regen',  href: 'mission'  },
+    { label: 'Our Programs', href: 'our-work' },
+    { label: 'Our Impact',   href: 'impact'   },
+    { label: 'Get Involved', href: 'partners' },
     { label: 'Contact',  href: 'contact'  },
   ]
 
@@ -276,11 +276,11 @@ function Navbar() {
                   onMouseLeave={e => e.target.style.color = navColor}
                 >{l.label}</a>
               ))}
-              <motion.a href="#contact"
+              {/* <motion.a href="#contact"
                 onClick={e => { e.preventDefault(); scrollTo('contact') }}
                 whileHover={{ background: C.sand, color: C.soil }}
                 style={{ border: '1.5px solid rgba(196,168,130,0.4)', color: navColor, padding: '8px 22px', fontSize: 11, textDecoration: 'none', fontWeight: 600, letterSpacing: '1.5px', textTransform: 'uppercase', transition: 'background 0.2s, color 0.2s', display: 'block', borderRadius: 999 }}
-              >Partner</motion.a>
+              >Partner</motion.a> */}
             </div>
           )}
 
@@ -1290,7 +1290,7 @@ function Leadership() {
   const isMobile = useIsMobile()
   const team = [
     { name:'Anushka Vidanapathirana', role:'President',                          image: anushkaImage,       color: C.leaf   },
-    { name:'Lakshmi Jayasinghe',      role:'Exec. Director',                     image: lakshmiImage,       color: C.sand   },
+    { name:'Lakshmi Jayasinghe',      role:'Executive Director',                     image: lakshmiImage,       color: C.sand   },
     { name:'Hasanka Padukka',         role:'Secretary',                          image: hasankaImage,       color: '#b8922a'},
     { name:'Ravees Dananjaya',        role:'Treasurer',                          image: dananjayaImage,     color: C.straw  },
     { name:'L.T Chandrakanthi',       role:'Assistant Secretary',                image: chandrakanthiImage, color: C.sage   },
