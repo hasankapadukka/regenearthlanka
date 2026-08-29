@@ -1003,8 +1003,7 @@ function Impact() {
               lineHeight: 0.95, textTransform: 'uppercase',
               letterSpacing: '-2px', margin: '0 0 20px',
             }}>
-              Our Impact<br />
-              <span style={{ color: C.leaf, fontStyle: 'italic' }}>By the Numbers</span>
+              Our Impact<br /> 
             </h2>
             <p style={{ color: 'rgba(245,240,232,0.4)', fontSize: 15, maxWidth: 480, margin: '0 auto', lineHeight: 1.8 }}>
               Transparent, measurable regeneration across every dimension we work in.
@@ -1633,9 +1632,9 @@ export default function Home() {
         <Ticker />
         <Stats />
         <About />
+        <Leadership />
         <Pillars />
         <Impact />
-        <Leadership />
         <GetInvolved /> 
         <Partners />
         <Contact />
