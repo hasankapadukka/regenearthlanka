@@ -1564,8 +1564,7 @@ function Contact() {
 
               {/* Email links with hover slide */}
               <div style={{ display: 'flex', flexDirection: 'column', gap: 6, marginBottom: 28 }}>
-                {[
-                  { email:'regenearthlankafoundation@gmail.com',    label:'General Enquiries' },
+                {[ 
                   { email:'info@regenearthlanka.org',    label:'General Enquiries' }
                 ].map((e, i) => (
                   <motion.a key={i} href={`mailto:${e.email}`}
