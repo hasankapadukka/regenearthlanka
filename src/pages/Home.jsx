@@ -1612,7 +1612,7 @@ function Footer() {
           <div style={{ color: 'rgba(245,240,232,0.24)', fontSize: 11 }}>Building Regenerative Agriculture. Empowering Rural Communities.</div>
         </div>
         <div style={{ display: 'flex', gap: 24, flexWrap: 'wrap' }}>
-          {['Privacy Policy','Terms of Use','Governance','Annual Reports'].map((l,i) => (
+          {['Privacy Policy','Terms of Use'].map((l,i) => (
             <a key={i} href="#" style={{ color: 'rgba(245,240,232,0.2)', fontSize: 11, textDecoration: 'none', transition: 'color 0.2s' }}
               onMouseEnter={e=>e.target.style.color=C.sand}
               onMouseLeave={e=>e.target.style.color='rgba(245,240,232,0.2)'}
