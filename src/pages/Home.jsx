@@ -512,6 +512,7 @@ function Stats() {
 /* ── ABOUT ──────────────────────────────────────────────── */
 function About() {
   const isMobile = useIsMobile()
+  const values = ['Integrity','Transparency','Sustainability','Inclusion','Innovation','Community-First']
   const sectionRef = useRef()
   useGSAP(() => {
     gsap.fromTo('.about-img-inner',
@@ -585,8 +586,23 @@ function About() {
                 >{btn.label}</motion.a>
               ))}
             </div>
+
+            
           </motion.div>
         </div>
+        {/* Values row — pill tags that glow on hover */}
+            <motion.div
+              initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }} transition={{ delay: 0.4 }}
+              style={{ marginTop: 40, paddingTop: 28, borderTop: `1px solid ${C.straw}`, display: 'flex', alignItems: 'center', gap: 10, flexWrap: 'wrap' }}
+            >
+              <span style={{ color: C.clay, fontSize: 9, letterSpacing: '3px', textTransform: 'uppercase', marginRight: 6 }}>Our Values</span>
+              {values.map((v, i) => (
+                <motion.span key={i}
+                  whileHover={{ background: `${C.leaf}22`, color: C.leaf, borderColor: `${C.leaf}55`, scale: 1.05 }}
+                  style={{ border: `1px solid ${C.straw}`, color: '#6b5a48', padding: '6px 18px', fontSize: 14, borderRadius: 999, cursor: 'default', transition: 'all 0.2s', fontWeight: 500 }}
+                >{v}</motion.span>
+              ))}
+            </motion.div>
       </Container>
     </section>
   )
@@ -1294,7 +1310,6 @@ function Leadership() {
     { name:'Ravees Dananjaya',        role:'Treasurer',                          image: dananjayaImage,     color: C.straw  },
     { name:'L.T Chandrakanthi',       role:'Assistant Secretary',                image: chandrakanthiImage, color: C.sage   },
   ]
-  const values = ['Integrity','Transparency','Sustainability','Inclusion','Innovation','Community-First']
 
   return (
     <section style={{ background: C.soil, padding: isMobile ? '64px 0' : '112px 0', overflow: 'hidden' }}>
@@ -1355,19 +1370,6 @@ function Leadership() {
           ))}
         </div>
 
-        {/* Values row — pill tags that glow on hover */}
-        <motion.div
-          initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }} transition={{ delay: 0.4 }}
-          style={{ marginTop: 56, paddingTop: 40, borderTop: '1px solid rgba(196,168,130,0.08)', display: 'flex', alignItems: 'center', gap: 10, flexWrap: 'wrap' }}
-        >
-          <span style={{ color: 'rgba(245,240,232,0.2)', fontSize: 9, letterSpacing: '3px', textTransform: 'uppercase', marginRight: 6 }}>Our Values</span>
-          {values.map((v, i) => (
-            <motion.span key={i}
-              whileHover={{ background: `${C.leaf}22`, color: C.leaf, borderColor: `${C.leaf}55`, scale: 1.05 }}
-              style={{ border: '1px solid rgba(196,168,130,0.12)', color: 'rgba(245,240,232,0.4)', padding: '6px 18px', fontSize: 14, borderRadius: 999, cursor: 'default', transition: 'all 0.2s', fontWeight: 500 }}
-            >{v}</motion.span>
-          ))}
-        </motion.div>
       </Container>
     </section>
   )
