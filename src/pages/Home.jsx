@@ -1470,67 +1470,7 @@ function GetInvolved() {
 /* ── DONATE ─────────────────────────────────────────────────
    Bank transfer details with a quick copy action for the account number.
 ──────────────────────────────────────────────────────────── */
-function Donate() {
-  const isMobile = useIsMobile()
-  const [copied, setCopied] = useState(false)
-  const accountNumber = '0140 14009787 120'
-
-  const copyAccountNumber = async () => {
-    try {
-      await navigator.clipboard.writeText(accountNumber)
-      setCopied(true)
-      window.setTimeout(() => setCopied(false), 1800)
-    } catch {
-      setCopied(false)
-    }
-  }
-
-  const details = [
-    { label: 'Account Name', value: 'Regen Earth Lanka Foundation' },
-    { label: 'Bank', value: 'Seylan Bank' },
-    { label: 'Branch', value: 'Dehiwala' },
-  ]
-
-  return (
-    <section id="donate" style={{ background: C.cream, padding: '96px 0', position: 'relative', overflow: 'hidden' }}>
-      <Container>
-        <div style={{ display: 'grid', gridTemplateColumns: isMobile ? '1fr' : '1fr 1fr', gap: isMobile ? 40 : 64, alignItems: 'center' }}>
-          <div>
-            <Label text="Make an impact" />
-            <h2 style={{ fontFamily: "'Barlow Condensed', sans-serif", fontSize: 'clamp(42px, 5vw, 76px)', fontWeight: 900, color: C.soil, lineHeight: 0.9, textTransform: 'uppercase', marginBottom: 24 }}>
-              Donate now.<br />
-              <span style={{ fontFamily: SCRIPT, color: C.leaf, textTransform: 'none', fontSize: '0.72em', fontWeight: 600 }}>Grow a future.</span>
-            </h2>
-            <p style={{ color: 'rgba(44,26,14,0.65)', fontSize: 15, lineHeight: 1.9, maxWidth: 460, margin: 0 }}>
-              Your contribution helps us restore ecosystems, strengthen rural livelihoods, and build a more resilient future for Sri Lanka.
-            </p>
-          </div>
-
-          <div style={{ background: C.soil, padding: '36px 32px', color: C.cream }}>
-            <div style={{ color: C.sand, fontSize: 10, letterSpacing: '2.5px', textTransform: 'uppercase', marginBottom: 24 }}>Bank transfer details</div>
-            <div style={{ display: 'flex', flexDirection: 'column', gap: 16 }}>
-              {details.map(detail => (
-                <div key={detail.label} style={{ display: 'flex', justifyContent: 'space-between', gap: 20, borderBottom: '1px solid rgba(245,240,232,0.12)', paddingBottom: 14 }}>
-                  <span style={{ color: 'rgba(245,240,232,0.45)', fontSize: 11, textTransform: 'uppercase', letterSpacing: '1.2px' }}>{detail.label}</span>
-                  <strong style={{ color: C.cream, fontSize: 14, textAlign: 'right', fontWeight: 500 }}>{detail.value}</strong>
-                </div>
-              ))}
-              <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', gap: 20 }}>
-                <span style={{ color: 'rgba(245,240,232,0.45)', fontSize: 11, textTransform: 'uppercase', letterSpacing: '1.2px' }}>Account Number</span>
-                <button type="button" onClick={copyAccountNumber} aria-label="Copy account number"
-                  style={{ border: 'none', background: 'none', color: C.sand, cursor: 'pointer', fontSize: 15, fontWeight: 600, letterSpacing: '1px', padding: 0 }}
-                >{copied ? 'Copied' : accountNumber}</button>
-              </div>
-            </div>
-            <div style={{ marginTop: 28, color: 'rgba(245,240,232,0.4)', fontSize: 12, lineHeight: 1.7 }}>
-              Please include your name as the transfer reference and contact us if you need a donation acknowledgment.
-            </div>
-          </div>
-        </div>
-      </Container>
-    </section>
-  )
-}
+ 
 
 /* ── CONTACT ─────────────────────────────────────────────────
    Two-column layout:
@@ -1702,8 +1642,7 @@ export default function Home() {
         <Impact />
         <Partners />
         <Leadership />
-        <GetInvolved />
-        <Donate />
+        <GetInvolved /> 
         <Contact />
         <Footer />
       </div>
