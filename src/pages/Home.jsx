@@ -37,7 +37,7 @@ const C = {
 }
 
 const IMG = {
-  logo:'../src/assets/regen_earth_lanka_foundation_logo.png',
+  logo:       'assets/regen_earth_lanka_foundation_logo.png',
   heroPerson: 'https://images.unsplash.com/photo-1680711155007-1bb8e70d4a9f?q=80&w=1065&auto=format&fit=crop',
   about:      'https://plus.unsplash.com/premium_photo-1769868306356-9b5fa1945450?q=80&w=986&auto=format&fit=crop',
   aboutWide:  'https://images.unsplash.com/photo-1581976684536-eb40b61ee175?q=80&w=2070&auto=format&fit=crop',
@@ -481,10 +481,10 @@ function Ticker() {
 function Stats() {
   const isMobile = useIsMobile()
   const stats = [
-    { n: '4',     label: 'Strategic Pillars' },
-    { n: '25+',   label: 'Partner Organizations' },
-    { n: '1000+', label: 'Farming Families' },
-    { n: '2024',  label: 'Year Established' },
+     { n: '4+',  label: 'Programs Active',      accent: C.leaf   },
+    { n: '10+',label: 'Farming Families',      accent: C.sand   },
+    { n: '5+',  label: 'Partner Orgs',          accent: '#b8922a'},
+    { n: '2026', label: 'Year Founded',          accent: C.straw  },
   ]
   return (
     <section style={{ background: C.cream }}>
@@ -947,10 +947,7 @@ function Impact() {
   const bgY = useTransform(scrollYProgress, [0, 1], ['-15%', '15%'])
 
   const bigStats = [
-    { n: '40+',  label: 'Programs Active',      accent: C.leaf   },
-    { n: '1000+',label: 'Farming Families',      accent: C.sand   },
-    { n: '25+',  label: 'Partner Orgs',          accent: '#b8922a'},
-    { n: '2024', label: 'Year Founded',          accent: C.straw  },
+   
   ]
 
   const metrics = [
@@ -1292,8 +1289,8 @@ function Leadership() {
   const isMobile = useIsMobile()
   const team = [
     { name:'Anushka Vidanapathirana', role:'President',                          image: anushkaImage,       color: C.leaf   },
-    { name:'Lakshmi Jayasinghe',      role:'Secretary General / Exec. Director', image: lakshmiImage,       color: C.sand   },
-    { name:'Hasanka Padukka',         role:'Vice President',                     image: hasankaImage,       color: '#b8922a'},
+    { name:'Lakshmi Jayasinghe',      role:'Exec. Director',                     image: lakshmiImage,       color: C.sand   },
+    { name:'Hasanka Padukka',         role:'Secretary',                          image: hasankaImage,       color: '#b8922a'},
     { name:'Ravees Dananjaya',        role:'Treasurer',                          image: dananjayaImage,     color: C.straw  },
     { name:'L.T Chandrakanthi',       role:'Assistant Secretary',                image: chandrakanthiImage, color: C.sage   },
   ]
@@ -1352,8 +1349,8 @@ function Leadership() {
                 <img src={m.image} alt={`${m.name}, ${m.role}`} style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center top', display: 'block' }} />
               </motion.div>
 
-              <div style={{ fontFamily: "'Barlow Condensed', sans-serif", fontWeight: 700, color: C.cream, fontSize: 14, lineHeight: 1.3, marginBottom: 6 }}>{m.name}</div>
-              <div style={{ color: m.color, fontSize: 11, letterSpacing: '1px', lineHeight: 1.4, textTransform: 'uppercase', fontWeight: 600 }}>{m.role}</div>
+              <div style={{ fontFamily: "'Barlow Condensed', sans-serif", fontWeight: 300, color: C.cream, fontSize: 18, lineHeight: 1.3, marginBottom: 6 }}>{m.name}</div>
+              <div style={{ color:'#b8922a', fontSize: 11, letterSpacing: '1px', lineHeight: 1.4, textTransform: 'uppercase', fontWeight: 600 }}>{m.role}</div>
             </motion.div>
           ))}
         </div>
@@ -1367,7 +1364,7 @@ function Leadership() {
           {values.map((v, i) => (
             <motion.span key={i}
               whileHover={{ background: `${C.leaf}22`, color: C.leaf, borderColor: `${C.leaf}55`, scale: 1.05 }}
-              style={{ border: '1px solid rgba(196,168,130,0.12)', color: 'rgba(245,240,232,0.4)', padding: '6px 18px', fontSize: 11, borderRadius: 999, cursor: 'default', transition: 'all 0.2s', fontWeight: 500 }}
+              style={{ border: '1px solid rgba(196,168,130,0.12)', color: 'rgba(245,240,232,0.4)', padding: '6px 18px', fontSize: 14, borderRadius: 999, cursor: 'default', transition: 'all 0.2s', fontWeight: 500 }}
             >{v}</motion.span>
           ))}
         </motion.div>
@@ -1484,11 +1481,9 @@ function GetInvolved() {
 function Contact() {
   const isMobile = useIsMobile()
   const contacts = [
-    { label:'Contact', value:'071 921 2024', href:'tel:+94719212024' },
-    { label:'Email', value:'regenearthlankafoundation@gmail.com', href:'mailto:regenearthlankafoundation@gmail.com' },
-    { label:'BR Number', value:'GA 00363513', href:null },
+    { label:'Contact', value:'+94 71 921 2024', href:'tel:+94719212024' },
     { label:'Address', value:'No. 327/B/12, Idigahadeniya, Pannipitiya', href:null },
-    { label:'WhatsApp', value:'071 921 2024', href:'https://wa.me/94719212024' },
+    { label:'WhatsApp', value:'+9471 921 2024', href:'https://wa.me/94719212024' },
   ]
 
   return (
@@ -1586,7 +1581,7 @@ function Contact() {
                 ))}
               </div>
 
-              <motion.a href="mailto:regenearthlankafoundation@gmail.com"
+              <motion.a href="mailto:info@regenearthlanka.org"
                 whileHover={{ scale: 1.02, boxShadow: `0 12px 36px rgba(74,110,56,0.5)` }}
                 whileTap={{ scale: 0.97 }}
                 style={{ display: 'block', textAlign: 'center', background: `linear-gradient(135deg, ${C.sage}, ${C.moss})`, color: C.cream, padding: '16px', textDecoration: 'none', fontSize: 11, fontWeight: 700, letterSpacing: '2px', textTransform: 'uppercase', borderRadius: 999, transition: 'box-shadow 0.3s' }}
@@ -1639,9 +1634,9 @@ export default function Home() {
         <About />
         <Pillars />
         <Impact />
-        <Partners />
         <Leadership />
         <GetInvolved /> 
+        <Partners />
         <Contact />
         <Footer />
       </div>
