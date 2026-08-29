@@ -513,6 +513,14 @@ function Stats() {
 function About() {
   const isMobile = useIsMobile()
   const values = ['Integrity','Transparency','Sustainability','Inclusion','Innovation','Community-First']
+  const team = [
+    { name:'Anushka Vidanapathirana', role:'President',                          image: anushkaImage,       color: C.leaf   },
+    { name:'Lakshmi Jayasinghe',      role:'Executive Director',                 image: lakshmiImage,       color: C.sand   },
+    { name:'Hasanka Padukka',         role:'Secretary',                          image: hasankaImage,       color: '#b8922a'},
+    { name:'Ravees Dananjaya',        role:'Treasurer',                          image: dananjayaImage,     color: C.straw  },
+    { name:'L.T Chandrakanthi',       role:'Assistant Secretary',                image: chandrakanthiImage, color: C.sage   },
+  ]
+  
   const sectionRef = useRef()
   useGSAP(() => {
     gsap.fromTo('.about-img-inner',
@@ -595,7 +603,7 @@ function About() {
               initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }} transition={{ delay: 0.4 }}
               style={{ marginTop: 40, paddingTop: 28, borderTop: `1px solid ${C.straw}`, display: 'flex', alignItems: 'center', gap: 10, flexWrap: 'wrap' }}
             >
-              <span style={{ color: C.clay, fontSize: 9, letterSpacing: '3px', textTransform: 'uppercase', marginRight: 6 }}>Our Values</span>
+              <span style={{ color: C.clay, fontSize:14, letterSpacing: '3px', textTransform: 'uppercase', marginRight: 6 }}>Our Values</span>
               {values.map((v, i) => (
                 <motion.span key={i}
                   whileHover={{ background: `${C.leaf}22`, color: C.leaf, borderColor: `${C.leaf}55`, scale: 1.05 }}
@@ -603,6 +611,72 @@ function About() {
                 >{v}</motion.span>
               ))}
             </motion.div>
+
+        <div style={{ display: 'grid', gridTemplateColumns: isMobile ? '1fr' : '5fr 7fr', gap: isMobile ? 20 : 64, alignItems: 'end', marginBottom: isMobile ? 36 :30,paddingTop: isMobile ? 36 : 60 }}>
+          <motion.div initial={{ opacity: 0, y: 24 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}>
+            <Label text="Governance" light />
+            <h2 style={{ fontFamily: "'Barlow Condensed', sans-serif", fontSize: 'clamp(36px, 4vw, 60px)', fontWeight: 900, color: 'rgb(44, 26, 14)', lineHeight: 0.95, textTransform: 'uppercase', letterSpacing: '-1px', margin: 0 }}>
+              Our  
+              <em style={{ fontFamily: SCRIPT, color: C.sand, textTransform: 'none', fontSize: '0.75em', fontWeight: 600, letterSpacing: 0 }}>Leadership</em>
+            </h2>
+          </motion.div>
+          <motion.p initial={{ opacity: 0, y: 16 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.1 }}
+            style={{ color: 'rgb(44, 26, 14)', fontSize: 14, lineHeight: 1.9, margin: 0, paddingBottom: 6 }}
+          >
+            Our leadership brings together deep expertise in environmental science, sustainable agriculture, rural development, and international trade to guide Sri Lanka's regenerative future.
+          </motion.p>
+        </div>
+
+        {/* Team cards */}
+        <div style={{ display: 'grid', gridTemplateColumns: isMobile ? 'repeat(2, 1fr)' : 'repeat(5, 1fr)', gap: 5 }}>
+          {team.map((m, idx) => (
+            <motion.div key={idx}
+              initial={{ opacity: 0, y: 48 }} whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }} transition={{ delay: idx * 0.1, duration: 0.7, ease: [0.16,1,0.3,1] }}
+              whileHover={{ y: -12, boxShadow: `0 24px 60px rgba(0,0,0,0.4), 0 0 0 1.5px ${m.color}55` }}
+              style={{
+                background: 'rgba(245,240,232,0.04)',
+                border: '1px solid rgba(245,240,232,0.06)',
+                padding: '32px 20px 28px',
+                textAlign: 'center',
+                transition: 'all 0.4s ease',
+                cursor: 'default', position: 'relative', overflow: 'hidden',
+              }}
+            >
+              {/* Glow blob behind avatar */}
+              <div style={{ position: 'absolute', top: 20, left: '50%', transform: 'translateX(-50%)', width: 80, height: 80, borderRadius: '50%', background: m.color, opacity: 0.08, filter: 'blur(20px)', pointerEvents: 'none' }} />
+
+              {/* Portrait */}
+              <motion.div
+                whileHover={{ scale: 1.12 }}
+                style={{
+                  width: '100%', height: 180, borderRadius: 2,
+                  background: `linear-gradient(135deg, ${m.color}88, ${m.color}33)`,
+                  border: `2px solid ${m.color}55`,
+                  display: 'block',
+                  margin: '0 auto 18px',
+                  boxShadow: `0 0 24px ${m.color}33`,
+                  transition: 'transform 0.3s', overflow: 'hidden',
+                }}
+              >
+                <img src={m.image} alt={`${m.name}, ${m.role}`} style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center top', display: 'block' }} />
+              </motion.div>
+
+              <div style={{ fontFamily: "'Barlow Condensed', sans-serif", fontWeight: 300, color: C.cream, fontSize: 18, lineHeight: 1.3, marginBottom: 6 }}>{m.name}</div>
+              <div style={{ color:'#b8922a', fontSize: 11, letterSpacing: '1px', lineHeight: 1.4, textTransform: 'uppercase', fontWeight: 600 }}>{m.role}</div>
+            </motion.div>
+          ))}
+        </div>
+      </Container>
+    </section>
+  )
+  
+
+  return (
+    <section style={{ background: C.soil, padding: isMobile ? '64px 0' : '112px 0', overflow: 'hidden' }}>
+      <Container>
+        
+
       </Container>
     </section>
   )
@@ -1303,76 +1377,7 @@ function Partners() {
 ──────────────────────────────────────────────────────────── */
 function Leadership() {
   const isMobile = useIsMobile()
-  const team = [
-    { name:'Anushka Vidanapathirana', role:'President',                          image: anushkaImage,       color: C.leaf   },
-    { name:'Lakshmi Jayasinghe',      role:'Executive Director',                     image: lakshmiImage,       color: C.sand   },
-    { name:'Hasanka Padukka',         role:'Secretary',                          image: hasankaImage,       color: '#b8922a'},
-    { name:'Ravees Dananjaya',        role:'Treasurer',                          image: dananjayaImage,     color: C.straw  },
-    { name:'L.T Chandrakanthi',       role:'Assistant Secretary',                image: chandrakanthiImage, color: C.sage   },
-  ]
-
-  return (
-    <section style={{ background: C.soil, padding: isMobile ? '64px 0' : '112px 0', overflow: 'hidden' }}>
-      <Container>
-        <div style={{ display: 'grid', gridTemplateColumns: isMobile ? '1fr' : '5fr 7fr', gap: isMobile ? 20 : 64, alignItems: 'end', marginBottom: isMobile ? 36 : 72 }}>
-          <motion.div initial={{ opacity: 0, y: 24 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}>
-            <Label text="Governance" light />
-            <h2 style={{ fontFamily: "'Barlow Condensed', sans-serif", fontSize: 'clamp(36px, 4vw, 60px)', fontWeight: 900, color: C.cream, lineHeight: 0.95, textTransform: 'uppercase', letterSpacing: '-1px', margin: 0 }}>
-              Board &<br />
-              <em style={{ fontFamily: SCRIPT, color: C.sand, textTransform: 'none', fontSize: '0.75em', fontWeight: 600, letterSpacing: 0 }}>Executive Team</em>
-            </h2>
-          </motion.div>
-          <motion.p initial={{ opacity: 0, y: 16 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.1 }}
-            style={{ color: 'rgba(245,240,232,0.38)', fontSize: 14, lineHeight: 1.9, margin: 0, paddingBottom: 6 }}
-          >
-            Our leadership brings together deep expertise in environmental science, sustainable agriculture, rural development, and international trade to guide Sri Lanka's regenerative future.
-          </motion.p>
-        </div>
-
-        {/* Team cards */}
-        <div style={{ display: 'grid', gridTemplateColumns: isMobile ? 'repeat(2, 1fr)' : 'repeat(5, 1fr)', gap: 10 }}>
-          {team.map((m, idx) => (
-            <motion.div key={idx}
-              initial={{ opacity: 0, y: 48 }} whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }} transition={{ delay: idx * 0.1, duration: 0.7, ease: [0.16,1,0.3,1] }}
-              whileHover={{ y: -12, boxShadow: `0 24px 60px rgba(0,0,0,0.4), 0 0 0 1.5px ${m.color}55` }}
-              style={{
-                background: 'rgba(245,240,232,0.04)',
-                border: '1px solid rgba(245,240,232,0.06)',
-                padding: '32px 20px 28px',
-                textAlign: 'center',
-                transition: 'all 0.4s ease',
-                cursor: 'default', position: 'relative', overflow: 'hidden',
-              }}
-            >
-              {/* Glow blob behind avatar */}
-              <div style={{ position: 'absolute', top: 20, left: '50%', transform: 'translateX(-50%)', width: 80, height: 80, borderRadius: '50%', background: m.color, opacity: 0.08, filter: 'blur(20px)', pointerEvents: 'none' }} />
-
-              {/* Portrait */}
-              <motion.div
-                whileHover={{ scale: 1.12 }}
-                style={{
-                  width: '100%', height: 180, borderRadius: 2,
-                  background: `linear-gradient(135deg, ${m.color}88, ${m.color}33)`,
-                  border: `2px solid ${m.color}55`,
-                  display: 'block',
-                  margin: '0 auto 18px',
-                  boxShadow: `0 0 24px ${m.color}33`,
-                  transition: 'transform 0.3s', overflow: 'hidden',
-                }}
-              >
-                <img src={m.image} alt={`${m.name}, ${m.role}`} style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center top', display: 'block' }} />
-              </motion.div>
-
-              <div style={{ fontFamily: "'Barlow Condensed', sans-serif", fontWeight: 300, color: C.cream, fontSize: 18, lineHeight: 1.3, marginBottom: 6 }}>{m.name}</div>
-              <div style={{ color:'#b8922a', fontSize: 11, letterSpacing: '1px', lineHeight: 1.4, textTransform: 'uppercase', fontWeight: 600 }}>{m.role}</div>
-            </motion.div>
-          ))}
-        </div>
-
-      </Container>
-    </section>
-  )
+  
 }
 
 /* ── GET INVOLVED ────────────────────────────────────────────
@@ -1614,7 +1619,7 @@ function Footer() {
             >{l}</a>
           ))}
         </div>
-        <div style={{ color: 'rgba(245,240,232,0.16)', fontSize: 11 }}>© 2024 Regen Earth Lanka Foundation</div>
+        <div style={{ color: 'rgba(245,240,232,0.16)', fontSize: 11 }}>© 2026 Regen Earth Lanka Foundation</div>
       </Container>
     </footer>
   )
